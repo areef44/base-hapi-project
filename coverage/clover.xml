@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1694869040357" clover="3.2.0">
-  <project timestamp="1694869040357" name="All files">
-    <metrics statements="121" coveredstatements="121" conditionals="38" coveredconditionals="38" methods="25" coveredmethods="25" elements="184" coveredelements="184" complexity="0" loc="121" ncloc="121" packages="9" files="16" classes="16"/>
+<coverage generated="1694870183826" clover="3.2.0">
+  <project timestamp="1694870183826" name="All files">
+    <metrics statements="123" coveredstatements="123" conditionals="38" coveredconditionals="38" methods="27" coveredmethods="27" elements="188" coveredelements="188" complexity="0" loc="123" ncloc="123" packages="9" files="16" classes="16"/>
     <package name="Applications.security">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="PasswordHash.js" path="/home/areef44/auth-api-base/src/Applications/security/PasswordHash.js">
@@ -66,12 +66,14 @@
       </file>
     </package>
     <package name="Domains.users">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="UserRepository.js" path="/home/areef44/auth-api-base/src/Domains/users/UserRepository.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="3" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
       </file>
     </package>
     <package name="Domains.users.entities">
