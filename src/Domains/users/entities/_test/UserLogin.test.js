@@ -38,3 +38,4 @@ describe('UserLogin entities', () => {
         expect(password).toEqual(payload.password);
     });
 });
+

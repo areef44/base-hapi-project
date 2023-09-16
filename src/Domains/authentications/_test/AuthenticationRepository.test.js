@@ -9,3 +9,4 @@ describe('AuthenticationRepository interface', () => {
         await expect(authenticationRepository.deleteToken('')).rejects.toThrowError('AUTHENTICATION_REPOSITORY.METHOD_NOT_IMPLEMENTED');
     });
 });
+
