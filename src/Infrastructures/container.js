@@ -5,16 +5,22 @@ const { createContainer } = require('instances-container');
 // external agency
 const { nanoid } = require('nanoid');
 const bcrypt = require('bcrypt');
+const Jwt = require('@hapi/jwt');
 const pool = require('./database/postgres/pool')
 
 // service (repository, helper, manager, etc)
 const UserRepositoryPostgres = require('./repository/UserRepositoryPostgres');
 const BcryptPasswordHash = require('./security/BcryptPasswordHash');
+const AuthenticationRepositoryPostgres = require('./repository/AuthenticationRepositoryPostgres');
+const JwtTokenManager = require('./security/JwtTokenManager');
 
 // use case
 const AddUserUseCase = require('../Applications/use_case/AddUserUseCase');
 const UserRepository = require('../Domains/users/UserRepository');
 const PasswordHash = require('../Applications/security/PasswordHash');
+const UserLoginUseCase = require('../Applications/use_case/UserLoginUseCase');
+const AuthenticationRepository = require('../Domains/authentications/AuthenticationRepository');
+const AuthenticationTokenManager = require('../Applications/security/AuthenticationTokenManager');
 
 // creating container
 const container = createContainer();
@@ -46,6 +52,28 @@ container.register([
             ],
         },
     },
+    {
+        key: AuthenticationRepository.name,
+        Class: AuthenticationRepositoryPostgres,
+        parameter: {
+          dependencies: [
+            {
+              concrete: pool,
+            },
+          ],
+        },
+    },
+    {
+        key: AuthenticationTokenManager.name,
+        Class: JwtTokenManager,
+        parameter: {
+          dependencies: [
+            {
+              concrete: Jwt.token,
+            },
+          ],
+        },
+    },
 ]);
 
 // registering use cases
@@ -65,6 +93,31 @@ container.register([
                     internal: PasswordHash.name,
                 },
             ],
+        },
+    },
+    {
+        key: UserLoginUseCase.name,
+        Class: UserLoginUseCase,
+        parameter: {
+          injectType: 'destructuring',
+          dependencies: [
+            {
+              name: 'userRepository',
+              internal: UserRepository.name,
+            },
+            {
+              name: 'authenticationRepository',
+              internal: AuthenticationRepository.name,
+            },
+            {
+              name: 'authenticationTokenManager',
+              internal: AuthenticationTokenManager.name,
+            },
+            {
+              name: 'passwordHash',
+              internal: PasswordHash.name,
+            },
+          ],
         },
     },
 ]);
