@@ -4,9 +4,15 @@ const RegisterUser = require('../../../Domains/users/entities/RegisterUser');
 const RegisteredUser = require('../../../Domains/users/entities/RegisteredUser');
 const pool = require('../../database/postgres/pool');
 const UserRepositoryPostgres = require('../UserRepositoryPostgres');
+const UserRepository = require('../UserRepositoryPostgres');
 
 
 describe('UserRepositoryPostgres', () => {
+    it('should be instance of UserRepository domain', () => {
+        const userRepositoryPostgres = new UserRepositoryPostgres({}, {}); // Dummy dependency
+    
+        expect(userRepositoryPostgres).toBeInstanceOf(UserRepository);
+    });
     /**
      * Fungsi afterEach dan afterAll merupakan fungsi yang digunakan untuk menampung sekumpulan kode yang dijalankan setelah melakukan pengujian. Bedanya fungsi afterEach dieksekusi setiap kali fungsi it selesai dijalankan, sedangkan afterAll dieksekusi setelah seluruh fungsi it selesai dijalankan.
      */
