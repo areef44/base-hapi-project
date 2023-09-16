@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1694870183826" clover="3.2.0">
-  <project timestamp="1694870183826" name="All files">
-    <metrics statements="123" coveredstatements="123" conditionals="38" coveredconditionals="38" methods="27" coveredmethods="27" elements="188" coveredelements="188" complexity="0" loc="123" ncloc="123" packages="9" files="16" classes="16"/>
+<coverage generated="1694870611055" clover="3.2.0">
+  <project timestamp="1694870611055" name="All files">
+    <metrics statements="124" coveredstatements="124" conditionals="38" coveredconditionals="38" methods="28" coveredmethods="28" elements="190" coveredelements="190" complexity="0" loc="124" ncloc="124" packages="9" files="16" classes="16"/>
     <package name="Applications.security">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="PasswordHash.js" path="/home/areef44/auth-api-base/src/Applications/security/PasswordHash.js">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
       </file>
     </package>
     <package name="Applications.use_case">
