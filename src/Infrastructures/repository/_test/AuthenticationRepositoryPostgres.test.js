@@ -54,5 +54,21 @@ describe('AuthenticationRepositoryPostgres', () => {
                 await expect(authenticationRepositoryPostgres.checkAvailabilityToken(token)).resolves.not.toThrow(InvariantError);
             });
         });
+
+        describe('deleteToken', () => {
+            it('should delete token from database', async () => {
+                // Arrange
+                const authenticationRepositoryPostgres = new AuthenticationRepositoryPostgres(pool);
+                const token = 'token';
+                await AuthenticationsTableTestHelper.addToken(token);
+    
+                // Action
+                await authenticationRepositoryPostgres.deleteToken(token);
+    
+                // Assert
+                const tokens = await AuthenticationsTableTestHelper.findToken(token);
+                expect(tokens).toHaveLength(0);
+            });
+        });
     });
 });
