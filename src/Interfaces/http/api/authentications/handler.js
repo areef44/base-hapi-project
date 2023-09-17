@@ -1,10 +1,12 @@
 const UserLoginUseCase = require("../../../../Applications/use_case/UserLoginUseCase");
+const RefreshAuthenticationUseCase = require('../../../../Applications/use_case/RefreshAuthenticationUseCase');
 
 class AuthenticationsHandler {
     constructor(container) {
         this._container = container;
 
         this.postAuthenticationHandler = this.postAuthenticationHandler.bind(this);
+        this.putAuthenticationHandler = this.putAuthenticationHandler.bind(this);
     }
 
     async postAuthenticationHandler(request, h) {
@@ -19,6 +21,18 @@ class AuthenticationsHandler {
         });
         response.code(201);
         return response;
+    }
+
+    async putAuthenticationHandler(request) {
+        const refreshAuthenticationUseCase = this._container.getInstance(RefreshAuthenticationUseCase.name);
+        const accessToken = await refreshAuthenticationUseCase.execute(request.payload);
+
+        return {
+            status: 'success',
+            data: {
+                accessToken,
+            },
+        };
     }
 }
 

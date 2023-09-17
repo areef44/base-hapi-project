@@ -21,6 +21,7 @@ const PasswordHash = require('../Applications/security/PasswordHash');
 const UserLoginUseCase = require('../Applications/use_case/UserLoginUseCase');
 const AuthenticationRepository = require('../Domains/authentications/AuthenticationRepository');
 const AuthenticationTokenManager = require('../Applications/security/AuthenticationTokenManager');
+const RefreshAuthenticationUseCase = require('../Applications/use_case/RefreshAuthenticationUseCase');
 
 // creating container
 const container = createContainer();
@@ -119,6 +120,23 @@ container.register([
             },
           ],
         },
+    },
+    {
+      key: RefreshAuthenticationUseCase.name,
+      Class: RefreshAuthenticationUseCase,
+      parameter: {
+        injectType: 'destructuring',
+        dependencies: [
+          {
+            name: 'authenticationRepository',
+            internal: AuthenticationRepository.name,
+          },
+          {
+            name: 'authenticationTokenManager',
+            internal: AuthenticationTokenManager.name,
+          },
+        ],
+      },
     },
 ]);
 
